@@ -1,3 +1,8 @@
 body{
     background-color: aquamarine;
+    text-align: center;
+    padding-top: 5px;
+}
+footer{
+    text-align: right;
 }
