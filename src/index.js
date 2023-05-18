@@ -1,8 +1,8 @@
-    function displayNewYork(){
+function displayNewYork(){
     let newYorkElement = document.querySelector("#new-york");
     let newYorkDateElement = newYorkElement.querySelector("#date");
     let newYorkTimeElement = newYorkElement.querySelector("#time");
-    let newYorkTime = moment().tz("American/New_York");
+    let newYorkTime = moment().tz("America/New_York");
 
     newYorkDateElement.innerHTML = newYorkTime.format("MMM Do YYYY");
     newYorkTimeElement.innerHTML = newYorkTime.format("h:mm:ss[<small>]A[</small>]");
@@ -22,3 +22,22 @@ function displayLondon(){
 }
 displayLondon();
 setInterval(displayLondon, 1000);
+
+function displayCity(event){
+    let cityTimeZone = event.target.value;
+    let cityTime = moment().tz(cityTimeZone);
+    let cityName= cityTimeZone.replace("_", " ").split("/")[1];
+    let cityElement = document.querySelector("#location");
+    cityElement.innerHTML =`
+      <div class="city">
+        <div>
+            <h2>${cityName}</h2>
+          <div class="date">${cityTime.format("MMM Do YYYY")}</div>
+        </div>
+            <div class="time">${cityTime.format("h:mm:ss[<small>]A[</small>]")}
+        </div>
+        `;
+}
+
+let displayCityElement = document.querySelector("#cities");
+displayCityElement.addEventListener("change", displayCity);
