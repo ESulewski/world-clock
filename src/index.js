@@ -25,6 +25,22 @@ function displayLondon(){
 }
 displayLondon();
 
+function displayTahiti(){
+
+    let tahitiElement = document.querySelector("#tahiti");
+    if (tahitiElement){
+    let tahitiDateElement = tahitiElement.querySelector("#date");
+    let tahitiTimeElement = tahitiElement.querySelector("#time");
+    let tahitiTime = moment().tz("Pacific/Tahiti");
+
+    tahitiDateElement.innerHTML = tahitiTime.format("MMM Do, YYYY");
+    tahitiTimeElement.innerHTML = tahitiTime.format("h:mm:ss[<small>]A[</small>]");
+}
+}
+
+
+displayTahiti();
+
 function displayCity(event){
     let cityTimeZone = event.target.value;
     if (cityTimeZone === "current"){
@@ -49,6 +65,7 @@ function displayCity(event){
 
 setInterval(displayNewYork, 1000);
 setInterval(displayLondon, 1000);
+setInterval(displayTahiti, 1000);
 
 let displayCityElement = document.querySelector("#cities");
 displayCityElement.addEventListener("change", displayCity);
