@@ -1,27 +1,29 @@
 function displayNewYork(){
     let newYorkElement = document.querySelector("#new-york");
+    if (newYorkElement){
     let newYorkDateElement = newYorkElement.querySelector("#date");
     let newYorkTimeElement = newYorkElement.querySelector("#time");
     let newYorkTime = moment().tz("America/New_York");
 
-    newYorkDateElement.innerHTML = newYorkTime.format("MMM Do YYYY");
+    newYorkDateElement.innerHTML = newYorkTime.format("MMM Do, YYYY");
     newYorkTimeElement.innerHTML = newYorkTime.format("h:mm:ss[<small>]A[</small>]");
+}
 }
 displayNewYork();
 
-setInterval(displayNewYork, 1000);
-
 function displayLondon(){
+
     let londonElement = document.querySelector("#london");
+    if (londonElement){
     let londonDateElement = londonElement.querySelector("#date");
     let londonTimeElement = londonElement.querySelector("#time");
     let londonTime = moment().tz("Europe/London");
 
-    londonDateElement.innerHTML = londonTime.format("MMM Do YYYY");
+    londonDateElement.innerHTML = londonTime.format("MMM Do, YYYY");
     londonTimeElement.innerHTML = londonTime.format("h:mm:ss[<small>]A[</small>]");
 }
+}
 displayLondon();
-setInterval(displayLondon, 1000);
 
 function displayCity(event){
     let cityTimeZone = event.target.value;
@@ -35,12 +37,18 @@ function displayCity(event){
       <div class="city">
         <div>
             <h2>${cityName}</h2>
-          <div class="date">${cityTime.format("MMM Do YYYY")}</div>
+          <div class="date">${cityTime.format("MMM Do, YYYY")}</div>
         </div>
             <div class="time">${cityTime.format("h:mm:ss[<small>]A[</small>]")}
         </div>
-        `;
+    </div>
+
+        <a class="home" href="index.html">Back to home page</a>
+        ` ;
 }
+
+setInterval(displayNewYork, 1000);
+setInterval(displayLondon, 1000);
 
 let displayCityElement = document.querySelector("#cities");
 displayCityElement.addEventListener("change", displayCity);

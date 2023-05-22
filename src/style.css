@@ -1,7 +1,7 @@
 
 body{
      background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-
+     background-attachment: fixed;
 }
 h1{
     text-align: center;
@@ -19,6 +19,7 @@ select{
 }
 footer {
     text-align: center;
+    padding: 8px;
 }
 .container {
     padding: 30px;
@@ -49,4 +50,9 @@ footer {
 .time small{
     font-size: 20px;
     vertical-align: middle;
+}
+.home {
+    display: block;
+    margin: 0 auto;
+    text-align: left;
 }
